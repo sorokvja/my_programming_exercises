@@ -169,5 +169,26 @@ void reverse_in_place(int *arr, size_t length) {
   }
 }
 
-// 5. Compare two arrays for equality
+// 11. Compare two arrays for equality
+#include <stddef.h>
+
+int arrays_equal(const int *a, const int *b, size_t length) {
+  if (length == 0) {
+    return 1;
+  }
+
+  const int *pa = a;
+  const int *pb = b;
+  const int *end = a + length;
+
+  while (pa < end) {
+    if (*pa != *pb) {
+      return 0;
+    }
+    pa++;
+    pb++;
+  }
+
+  return 1;
+}
 
