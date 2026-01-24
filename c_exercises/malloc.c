@@ -34,4 +34,30 @@ typedef struct {
 Point *point_new(int x, int y);
 void  point_free(Point *p);
 
-// 2. 
+// 2. Allocate Int Array on the Heap 
+#include <stdlib.h>
+#include <stddef.h>
+
+int *int_array_new(size_t length, int initial_value) {
+  if (length == 0) {
+    return NULL;
+  }
+  
+  int *arr = malloc(length * sizeof(int));
+  if (arr == NULL) {
+    return NULL;
+  }
+
+  int *current = arr;
+  int *end = arr + length;
+  while (current < end) {
+    *current = initial_value;
+    current++;
+  }
+  //alternative:
+  //for (size_t i = 0; i < length; i++) {
+  //arr[i] = initial_value;
+
+  return arr;
+}
+
