@@ -1,3 +1,6 @@
+The main goal of performing the exercises was to learn and enhance understanding of pointers in C. 
+Generally speaking it is assumed that the appropriate values are passed to the functions, and safe-cheks are not required. 
+
 1. Basic pointer & dereference
 ```c
 #include <stdio.h>
@@ -16,7 +19,7 @@ void pointer_setup() {
 ```
 
 2. Swap two integers using pointers
-
+```c
 void swap_ints(int *a, int *b) {
   int temp = *a;
   *a = *b;
@@ -30,16 +33,20 @@ void apply_damage(int *health, int damage) {
     *health = 0;
   }
 }
+```
 
-// 3. Set a value via pointer to pointer
+3. Set a value via pointer to pointer
+```c
 void set_via_pp(int **pp, int value) {
   if (pp == 0 || *pp == 0) {
     return;
   }
   **pp = value;
 }
+```
 
-// 4. Walk an array with pointer arithmetic
+4. Walk an array with pointer arithmetic
+```c
 #include <stddef.h>
 
 void fill_with_pointer(int *out, int length) {
@@ -49,8 +56,10 @@ void fill_with_pointer(int *out, int length) {
     *(out + i) = *(p + i);
   }
 }
+```
 
-// 5. String (char *) manipulation - compute the length of a C-string using a pointer that walks through the string
+5. String (char *) manipulation - compute the length of a C-string using a pointer that walks through the string
+```c
 #include <stddef.h>
 
 size_t my_strlen(const char *s) {
@@ -63,8 +72,10 @@ size_t my_strlen(const char *s) {
   } 
   return (size_t)(p - s);
 }
+```
 
-// 5a. Copy a C string from src to dst using pointer arithmetic
+5a. Copy a C string from src to dst using pointer arithmetic
+```c
 #include <stddef.h>
 
 void copy_message(const char *src, char *dst) {
@@ -77,8 +88,10 @@ void copy_message(const char *src, char *dst) {
   }
   *p_dst = '\0';
 }
+```
 
-// 6. Dynamically allocated array
+6. Dynamically allocated array
+```c
 #include <stdlib.h>
 
 int *make_sequence(size_t n) {
@@ -94,8 +107,10 @@ int *make_sequence(size_t n) {
   }
   return numbers;
 }
+```
 
-// 7. Sum with a moving pointer
+7. Sum with a moving pointer
+```c
 #include <stddef.h>
 
 int sum_with_pointer(const int *arr, size_t length) {
@@ -110,8 +125,10 @@ int sum_with_pointer(const int *arr, size_t length) {
 
   return sum;
 }
+```
 
-// 8. Count positive numbers using pointer arithmetic
+8. Count positive numbers using pointer arithmetic
+```c
 #include <stddef.h>
 
 size_t count_positive(const int *arr, size_t length) {
@@ -133,8 +150,10 @@ size_t count_positive(const int *arr, size_t length) {
 
   return count;
 }
+```
 
-// 9. Find the maximum element
+9. Find the maximum element
+```c
 #include <stddef.h>
 
 int *find_max(int *arr, size_t length) {
@@ -155,8 +174,10 @@ int *find_max(int *arr, size_t length) {
 
   return max;
 }
+```
 
-// 10. Reverse an array in-place using pointers
+10. Reverse an array in-place using pointers
+```c
 #include <stddef.h>
 
 void reverse_in_place(int *arr, size_t length) {
@@ -171,8 +192,10 @@ void reverse_in_place(int *arr, size_t length) {
     right--;
   }
 }
+```
 
-// 11. Compare two arrays for equality
+11. Compare two arrays for equality
+```c
 #include <stddef.h>
 
 int arrays_equal(const int *a, const int *b, size_t length) {
@@ -194,4 +217,4 @@ int arrays_equal(const int *a, const int *b, size_t length) {
 
   return 1;
 }
-
+```
