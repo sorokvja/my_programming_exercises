@@ -1,4 +1,5 @@
-// 1. Basic pointer & dereference
+1. Basic pointer & dereference
+```c
 #include <stdio.h>
 #include "exercise.h"
 
@@ -12,8 +13,10 @@ void pointer_setup() {
   printf("Pointer address: %p\n", (void*)my_number_ptr);
   printf("Value: %d\n", my_number);
 }
+```
 
-// 2. Swap two integers using pointers
+2. Swap two integers using pointers
+
 void swap_ints(int *a, int *b) {
   int temp = *a;
   *a = *b;
