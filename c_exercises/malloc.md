@@ -1,4 +1,5 @@
-// 1. Allocate and free a simple struct
+1. Allocate and free a simple struct
+```c
 //exercise.c
 #include <stdlib.h>
 #include "exercise.h"
@@ -33,8 +34,10 @@ typedef struct {
 
 Point *point_new(int x, int y);
 void  point_free(Point *p);
+```
 
-// 2. Allocate Int Array on the Heap 
+2. Allocate Int Array on the Heap 
+```c
 #include <stdlib.h>
 #include <stddef.h>
 
@@ -60,4 +63,6 @@ int *int_array_new(size_t length, int initial_value) {
 
   return arr;
 }
+```
 
+3. 
