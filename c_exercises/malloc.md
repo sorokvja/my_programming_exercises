@@ -133,7 +133,8 @@ int int_stack_pop(IntStack *s, int *out_value) {
 ```
 
 4. Add stack_push and stack_pop for stack_t
-//exercise.h
+exercise.h
+```c
 #pragma once
 
 #include <stddef.h>
@@ -149,8 +150,9 @@ void stack_free(stack_t *s);
 
 int stack_push(stack_t *s, void *value);
 int stack_pop(stack_t *s, void **out_value);
-
-//exercise.c
+```
+exercise.c
+```c
 #include <stdlib.h>
 #include "exercise.h"
 
@@ -200,5 +202,6 @@ int stack_pop(stack_t *s, void **out_value) {
   *out_value = s->data[s->count];
   return 0;
 }
+```
 
 5. 
