@@ -1,6 +1,19 @@
-1. Allocate and free a simple struct
+1. Allocate and free a simple struct  
+
+exercise.h
 ```c
-//exercise.c
+#pragma once
+
+typedef struct {
+  int x;
+  int y;
+} Point;
+
+Point *point_new(int x, int y);
+void  point_free(Point *p);
+```
+exercise.c
+```c
 #include <stdlib.h>
 #include "exercise.h"
 
@@ -23,17 +36,6 @@ void point_free(Point *p) {
 
   free(p); 
 }
-
-//exercise.h
-#pragma once
-
-typedef struct {
-  int x;
-  int y;
-} Point;
-
-Point *point_new(int x, int y);
-void  point_free(Point *p);
 ```
 
 2. Allocate a dynamic array of int values on the heap, set all elements to the same initial value, and return a pointer to the array  
