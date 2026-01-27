@@ -133,6 +133,7 @@ int int_stack_pop(IntStack *s, int *out_value) {
 ```
 
 4. Add stack_push and stack_pop for stack_t  
+
 exercise.h
 ```c
 #pragma once
