@@ -316,3 +316,48 @@ int stack_pop(stack_t *s, void **out_value) {
 }
 ```
 
+6. Allocate an array of Player on the heap, then free the array safely.  
+
+player.h  
+```c
+#pragma once
+
+typedef struct {
+    int id;
+    int score;
+} Player;
+
+Player *create_players(int num_players);
+void free_players(Player *players);
+```
+
+exercise.c
+```c
+#include <stdlib.h>
+#include "player.h"
+
+Player *create_players(int num_players) {
+  if (num_players <= 0) {
+    return NULL;
+  }
+  Player *arr_players = malloc(num_players * sizeof(Player));
+  if (!arr_players) {
+    return NULL;
+  }
+  for (int i = 0; i < num_players; i++) {
+    (arr_players + i)->id = i;
+    (arr_players + i)->score = i * 10;
+    //alternative sintax would be:
+    //arr_players[i].id = i;
+    //arr_players[i].score = i * 10;
+  }
+  return arr_players;
+}
+
+void free_players(Player *players) {
+  if (!players) {
+    return;
+  } 
+  free(players);
+}
+```
