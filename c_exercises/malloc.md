@@ -207,4 +207,98 @@ int stack_pop(stack_t *s, void **out_value) {
 }
 ```
 
-5. 
+5. Upgrade a stack to automatically grow when it’s full. 
+
+stack.h
+```c
+#pragma once
+
+#include <stddef.h>
+
+typedef struct {
+  size_t count;
+  size_t capacity;
+  void **data;
+} stack_t;
+
+stack_t *stack_new(size_t initial_capacity);
+void stack_free(stack_t *s);
+int stack_push(stack_t *s, void *value);
+int stack_pop(stack_t *s, void **out_value);
+```
+exercise.c
+```c
+#include <stdlib.h>
+#include "stack.h"
+
+stack_t *stack_new(size_t initial_capacity) {
+  stack_t *s = malloc(sizeof(stack_t));
+  if (!s) {
+    return NULL;
+  }
+
+  s->count = 0;
+  s->capacity = initial_capacity;
+  s->data = NULL;
+
+  if (initial_capacity > 0) {
+    s->data = malloc(initial_capacity * sizeof(void *));
+    if (!s->data) {
+      free(s);
+      return NULL;
+    }
+  }
+
+  return s;
+}
+
+void stack_free(stack_t *s) {
+  if (!s) {
+    return;
+  }
+  free(s->data);
+  free(s);
+}
+
+int stack_push(stack_t *s, void *value) {
+  if (s == NULL) {
+    return -1;
+  }
+  if (s->count < s->capacity) {
+    s->data[s->count] = value;
+    s->count++;
+    return 0;
+  }
+  if (s->count == s->capacity) {
+    size_t new_capacity;
+    if (s->capacity == 0) {
+      new_capacity = 1;
+    } else {
+      new_capacity = s->capacity * 2;
+    }
+    void **new_data = realloc(s->data, new_capacity * sizeof(void *));
+    if (new_data == NULL) {
+      return -1;
+    }
+    s->data = new_data;
+    s->capacity = new_capacity;
+  }
+  s->data[s->count] = value;
+  s->count++;
+  return 0;
+}
+
+int stack_pop(stack_t *s, void **out_value) {
+  if (!s || !out_value) {
+    return -1;
+  }
+  if (s->count == 0) {
+    return -1;
+  }
+
+  s->count--;
+  *out_value = s->data[s->count];
+  return 0;
+}
+```
+
