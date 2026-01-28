@@ -1,3 +1,17 @@
+0. Allocate memory on the heap for one int using malloc
+```c
+#include <stdlib.h>
+
+int *allocate_int_42(void) {
+  int *p = malloc(sizeof(int));
+  if (!p) {
+    return NULL;
+  }
+  *p = 42;
+  return p;
+}
+```
+
 1. Allocate and free a simple struct  
 
 exercise.h
