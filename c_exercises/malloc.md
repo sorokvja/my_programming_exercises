@@ -361,3 +361,34 @@ void free_players(Player *players) {
   free(players);
 }
 ```
+
+7. Duplicate a string on the heap
+```c
+#include <stdlib.h>
+
+char *duplicate_string(const char *input) {
+  if (input == NULL) {
+    return NULL;
+  }
+  const char *p = input;
+  while (*p != '\0') {
+    p++;
+  }
+  int len = p - input;
+  
+  char *copy = malloc((len + 1) * sizeof(char));
+  if (copy == NULL) {
+    return NULL;
+  }
+  char *dst = copy;
+  const char *src = input;
+  while (*src != '\0') {
+    *dst = *src;
+    dst++;
+    src++;
+  }
+  *dst = '\0';
+  return copy;
+}
+```
+
