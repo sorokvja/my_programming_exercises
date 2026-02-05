@@ -392,3 +392,34 @@ char *duplicate_string(const char *input) {
 }
 ```
 
+8. Allocate a countdown array
+```c
+#include <stdlib.h>
+
+int *countdown_new(int start, int *out_length) {
+  if (out_length == NULL) {
+    return NULL;
+  }
+  if (start <= 0) {
+    *out_length = 0;
+    return NULL;
+  }
+  int *countdown = malloc(start * sizeof(int));
+  if (countdown == NULL) {
+    *out_length = 0;
+    return NULL;
+  }
+  *out_length = start;
+
+  int *dst = countdown;
+  int i = start;
+  while (i > 0) {
+    *dst = i;
+    i--;
+    dst++;
+  }
+  return countdown;
+}
+```
+
+9. to be added
