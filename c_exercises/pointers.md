@@ -1,6 +1,3 @@
-The main goal of performing the exercises was to learn and enhance understanding of pointers in C. 
-Generally speaking it is assumed that the appropriate values are passed to the functions, and safe-cheks are not required. 
-
 1. Basic pointer & dereference
 ```c
 #include <stdio.h>
@@ -218,3 +215,26 @@ int arrays_equal(const int *a, const int *b, size_t length) {
   return 1;
 }
 ```
+
+12. Write two helper functions - set_value should store a value through a pointer to a pointer, swap_pointers should swap two int * pointers using int ** parameters.
+```c
+#include <stddef.h>
+
+void set_value(int **pp, int value) {
+  if (pp == NULL || *pp == NULL) {
+    return;
+  }
+  **pp = value;
+}
+
+void swap_pointers(int **a, int **b) {
+  if (a == NULL || b == NULL) {
+    return;
+  }
+  int *temp = *a;
+  *a = *b;
+  *b = temp;
+}
+```
+
+13. To be added
