@@ -1,3 +1,15 @@
+0. Read through a pointer-to-pointer
+```c
+#include <stdlib.h>
+
+int get_value(int **pp) {
+  if (pp == NULL || *pp == NULL) {
+    return 0;
+  }
+  return **pp;
+}
+```
+
 1. Basic pointer & dereference
 ```c
 #include <stdio.h>
