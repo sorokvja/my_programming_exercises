@@ -422,4 +422,47 @@ int *countdown_new(int start, int *out_length) {
 }
 ```
 
-9. to be added
+9. Build a dynamic 2D grid (e.g., for a game map), each row can have a different length (a jagged array). The task is to allocate and free the grid using dynamic memory. 
+
+```c
+#include <stdlib.h>
+#include <stddef.h>
+
+int **make_grid(const int *row_sizes, size_t num_rows) {
+  if (row_sizes == NULL) {
+    return NULL;
+  }
+
+  int **grid = malloc(num_rows * sizeof(int*));
+  if (grid == NULL ) {
+    return NULL;
+  }
+
+  for (int i = 0; i < num_rows; i++) {
+    *(grid + i) = malloc(*(row_sizes + i) * sizeof(int));
+    if (*(grid + i) == NULL) {
+      for (int j = 0; j < i; j++) {
+        free(*(grid + j));
+      }
+      free(grid);
+      return NULL;
+    }
+    for (int k = 0; k < *(row_sizes + i); k++) {
+      *(*(grid + i) + k) = i * 10 + k;
+    }
+  }
+  return grid;
+}
+
+void free_grid(int **grid, const int *row_sizes, size_t num_rows) {
+  if (grid == NULL ) {
+    return;
+  }
+  for (int i = 0; i < num_rows; i++) {
+    free(*(grid + i));
+  }
+  free(grid);
+}
+```
+
+10. to be added
