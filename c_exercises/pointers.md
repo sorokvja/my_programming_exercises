@@ -1,4 +1,4 @@
-0. Read through a pointer-to-pointer
+0. a) Read through a pointer-to-pointer
 ```c
 #include <stdlib.h>
 
@@ -7,6 +7,18 @@ int get_value(int **pp) {
     return 0;
   }
   return **pp;
+}
+```
+
+0. b) Redirect a pointer - redirect_pointer should change the pointer stored at *pp so that it points to new_target.
+```c
+#include <stddef.h>
+
+void redirect_pointer(int **pp, int *new_target) {
+  if (pp == NULL) {
+    return;
+  }
+  *pp = new_target;
 }
 ```
 
