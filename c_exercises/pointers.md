@@ -22,6 +22,23 @@ void redirect_pointer(int **pp, int *new_target) {
 }
 ```
 
+0. c) Swap values through Pointer-to-Pointer - write a function swap_values that swaps the int values using int ** pointers
+```c
+#include <stddef.h>
+
+void swap_values(int **a, int **b) {
+  if (a == NULL || b == NULL) {
+    return;
+  }
+  if (*a == NULL || b == NULL) {
+    return;
+  }
+  int temp = **a;
+  **a = **b;
+  **b = temp;
+}
+```
+
 1. Basic pointer & dereference
 ```c
 #include <stdio.h>
