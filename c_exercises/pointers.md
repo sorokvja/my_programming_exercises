@@ -278,4 +278,29 @@ void swap_pointers(int **a, int **b) {
 }
 ```
 
-13. To be added
+13. Initialize an array of pointers
+```c
+#include <stddef.h>
+
+void init_pointers(int *values, int **ptrs, int count) {
+  if (values == NULL || ptrs == NULL || count <= 0) {
+    return;
+  }
+  for (int i = 0; i < count; i++) {
+    *(ptrs + i) = (values + i);    //ptrs[i] = &values[i];
+  }
+}
+
+int sum_through_pointers(int **ptrs, int count) {
+  if (ptrs == NULL || count <= 0) {
+    return 0;    //not good in this case, better use size_t
+  } 
+  int total = 0;
+  for (int i = 0; i < count; i++) {
+    total += **(ptrs + i);    //depending on the real life scenario, should check ptrs[i] and respond accordingly
+  }
+  return total;
+}
+```
+
+
