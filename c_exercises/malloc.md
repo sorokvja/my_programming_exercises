@@ -465,4 +465,53 @@ void free_grid(int **grid, const int *row_sizes, size_t num_rows) {
 }
 ```
 
-10. to be added
+10. Create and manage a Rectangle struct on the heap using malloc and free
+rectangle.h
+```c
+#pragma once
+
+typedef struct {
+  int width;
+  int height;
+} Rectangle;
+
+Rectangle *rectangle_new(int width, int height);
+void rectangle_free(Rectangle *r);
+int rectangle_area(Rectangle *r);
+```
+
+exercise.c
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include "rectangle.h"
+
+Rectangle *rectangle_new(int width, int height) {
+  printf("Allocating rectangle...\n");
+  Rectangle *r = malloc(sizeof(Rectangle));
+  if (!r) {
+    return NULL;
+  }
+  r->width = width;
+  r->height = height;
+  return r;
+}
+
+void rectangle_free(Rectangle *r) {
+  printf("Freeing rectangle...\n");
+  if (!r) {
+    return;
+  }
+  free(r);
+}
+
+int rectangle_area(Rectangle *r) {
+  if (!r) {
+    return 0;
+  }
+  int area = r->width * r->height;
+  return area;
+}
+```
+
+11. to be added
