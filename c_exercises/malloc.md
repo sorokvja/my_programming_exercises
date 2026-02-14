@@ -514,4 +514,38 @@ int rectangle_area(Rectangle *r) {
 }
 ```
 
-11. to be added
+11. Implement dynamic memory management for a small set of 2D points stored on the heap.
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+  int x;
+  int y;
+} Point;
+
+Point *point_new(int x, int y) {
+  Point *p = malloc(sizeof(Point));
+  if (p == NULL) {
+    return NULL;
+  }
+  (*p).x = x;    //p->x = x;
+  p->y = y;
+  return p;
+}
+
+void point_free(Point *p) {
+  if (p == NULL) {
+    return;
+  }
+  free(p);
+}
+
+void point_print(Point *p) {
+  if (p == NULL) {
+    printf("NULL");
+  } else {
+    printf("(%d, %d)", p->x, p->y);
+  }
+}
+```
