@@ -51,4 +51,39 @@ int get_stamina_drain(WeatherCondition weather) {
 }
 ```
 
-3. to be added
+3. Use an enum inside a struct to control how a shopkeeper in a game would calculates prices.
+```c
+#include <stddef.h>
+
+typedef enum {
+  FRIENDLY,
+  NEUTRAL,
+  GREEDY,
+  DISCOUNT
+} Disposition;
+
+typedef struct {
+  Disposition disposition;
+  float markup_rate;
+} Shopkeeper;
+
+float calculate_price(Shopkeeper s, float base_price) {
+  if (base_price < 0.0f) {
+    return 0.0f;
+  }
+  switch (s.disposition) {
+    case FRIENDLY:
+      return base_price;
+    case NEUTRAL:
+      return base_price * 1.2f;
+    case GREEDY:
+      return base_price * s.markup_rate;
+    case DISCOUNT:
+      return base_price * 0.8f;
+    default:
+      return base_price;
+  }
+}
+```
+
+4. to be added later
