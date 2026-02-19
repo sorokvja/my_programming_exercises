@@ -86,4 +86,51 @@ float calculate_price(Shopkeeper s, float base_price) {
 }
 ```
 
-4. to be added later
+4. Use an enum and a switch statement to move a player around a 2D grid.  
+exercise.h
+```c
+#pragma once
+
+typedef struct {
+  int x;
+  int y;
+} Point;
+
+typedef enum {
+  DIR_NORTH,
+  DIR_SOUTH,
+  DIR_EAST,
+  DIR_WEST
+} Direction;
+
+void move_player(Point *p, Direction dir, int steps);
+```
+exercise.c
+```c
+#include <stdio.h>
+#include "exercise.h"
+
+void move_player(Point *p, Direction dir, int steps) {
+  if (p == NULL || steps < 0) {
+    return;
+  }
+  switch (dir) {
+    case DIR_NORTH:
+      (*p).y += steps;
+      break;
+    case DIR_SOUTH:
+      (*p).y -= steps;
+      break;
+    case DIR_EAST:
+      p->x += steps;
+      break;
+    case DIR_WEST:
+      p->x -= steps;
+      break;
+    default:
+      printf("Unknown direction: %d\n", dir);
+      break;
+  }
+}
+```
+
