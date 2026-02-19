@@ -87,6 +87,7 @@ float calculate_price(Shopkeeper s, float base_price) {
 ```
 
 4. Use an enum and a switch statement to move a player around a 2D grid.  
+
 exercise.h
 ```c
 #pragma once
