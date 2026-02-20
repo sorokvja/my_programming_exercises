@@ -303,4 +303,32 @@ int sum_through_pointers(int **ptrs, int count) {
 }
 ```
 
+14. You’re managing a party of adventurers, and their health values are stored in a plain int array. To practice void pointer basics, you’ll write functions that work with this array using a void * pointer.
+```c
+#include <stddef.h>
+
+int sum_health(void *health_ptr, int count) {
+  if (health_ptr == NULL || count <= 0) {
+    return 0;
+  }
+  int sum = 0;
+  int *ptr = (int *)health_ptr;
+  for (int i = 0; i < count; i++) {
+    sum += ptr[i];    //sum += *(ptr + i);
+  }
+  return sum;
+}
+
+void heal_all(void *health_ptr, int count, int amount) {
+  if (health_ptr == NULL || count <= 0) {
+    return;
+  }
+  int *ptr = (int *)health_ptr;
+  for (int i = 0; i < count; i++) {
+    ptr[i] += amount;
+  }
+  return;
+}
+```
+
 
