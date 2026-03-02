@@ -549,3 +549,34 @@ void point_print(Point *p) {
   }
 }
 ```
+
+12. Write two functions that allocate an array of int values on the heap: malloc vs calloc.
+```c
+#include <stdlib.h>
+
+int* create_array_with_malloc(int length) {
+  if (length <= 0) {
+    return NULL;
+  }
+  int *p = malloc(length * sizeof(int));
+  if (p == NULL) {
+    return NULL;
+  }
+  for (int i = 0; i < length; i++) {
+    p[i] = -1;
+  }
+  return p;
+}
+
+int* create_array_with_calloc(int length) {
+  if (length <= 0) {
+    return NULL;
+  }
+  int *p = calloc(length, sizeof(int));
+  if (p == NULL) {
+    return NULL;
+  }
+  return p;
+}
+```
+
